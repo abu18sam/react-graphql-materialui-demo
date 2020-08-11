@@ -1,0 +1,27 @@
+overwrite: true
+schema: "http://localhost:4000/graphql"
+documents: "./src/**/*.{ts,tsx}"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
+      # constEnums: false
+      # enumsAsTypes: false
+      # numericEnums: false
+      # futureProofEnums: false
+      # enumsAsConst: false
+      # onlyOperationTypes: false
+      # immutableTypes: false
+      # maybeValue: T | null
+      # noExport: false
+      # enumPrefix: true
+      # fieldWrapperValue: T
+      # wrapFieldDefinitions: false
+      # typesPrefix: 
+      # skipTypename: false
+      # nonOptionalTypename: false
+      # useTypeImports: false
