@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { TextField, Button, Card, CardContent, CardActions, Typography, makeStyles, Container } from '@material-ui/core';
+import { TextField, Button, Card, CardContent, Typography, makeStyles, Container } from '@material-ui/core';
 
 import { useMutation } from "@apollo/client";
 import REGISTER_USER from './signUpQuery';
@@ -88,7 +88,7 @@ const SignUp: React.FC = () => {
             <Card className={classes.card} >
                 <CardContent >
                     <div className={classes.logoImg}>
-                        <img src="https://img.icons8.com/dusk/64/000000/safe-in.png" />
+                        <img src="https://img.icons8.com/dusk/64/000000/safe-in.png" alt="store safe"/>
                     </div>
                     <Typography variant="h4" color="textPrimary" style={{ textAlign: 'center' }}>Sign up</Typography>
                     <form onSubmit={handleSubmit} className={classes.signupForm}>

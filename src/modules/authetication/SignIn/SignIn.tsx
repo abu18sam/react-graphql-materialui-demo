@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import { Container, Card, Typography, makeStyles, CardContent, TextField, CardActions, Button } from '@material-ui/core';
 import { useMutation } from '@apollo/client';
 import SIGNIN from './signInQuery';
+import { authContext } from '../../../contexts/AuthContext';
 
 const useStyles = makeStyles({
     container: {
@@ -50,6 +51,8 @@ const SignIn = () => {
 
     const [formFields, setFormFields] = useState({ ...InitialState });
 
+    const { setLoginData } = useContext(authContext);
+
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormFields({ ...formFields, [e.target.name]: e.target.value });
     }
@@ -57,6 +60,7 @@ const SignIn = () => {
     const [loginUser] = useMutation(SIGNIN);
 
     const handleSubmit = async (e: any) => {
+        e.preventDefault();
 
         try {
             const { email, password } = formFields;
@@ -67,6 +71,7 @@ const SignIn = () => {
                 }
             })
             console.log("login_result=> ", result)
+            setLoginData(result.data.login);
         }
         catch (error) {
             console.log(error);
