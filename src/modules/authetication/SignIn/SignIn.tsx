@@ -45,7 +45,9 @@ const InitialState: formFields = {
     password: ""
 }
 
-const SignIn = () => {
+const SignIn = (props: any) => {
+
+    console.log("props=> ",props);
 
     const classes = useStyles();
 
@@ -70,8 +72,12 @@ const SignIn = () => {
                     password
                 }
             })
-            console.log("login_result=> ", result)
-            setLoginData(result.data.login);
+            console.log("login_result=> ",)
+            if(result?.data?.login){
+                setLoginData(result.data.login);
+                props.history.replace('/users-list')
+            }
+            
         }
         catch (error) {
             console.log(error);
@@ -128,12 +134,5 @@ const SignIn = () => {
         </Container>
     )
 }
-
-// {
-//     "password":"1234",
-//     "email":"alex@gmail.com"
-//   }
-
-
 
 export default SignIn;
