@@ -47,8 +47,6 @@ const InitialState: formFields = {
 
 const SignIn = (props: any) => {
 
-    console.log("props=> ",props);
-
     const classes = useStyles();
 
     const [formFields, setFormFields] = useState({ ...InitialState });
@@ -72,10 +70,10 @@ const SignIn = (props: any) => {
                     password
                 }
             })
-            console.log("login_result=> ",)
+            // console.log("login_result=> ",)
             if(result?.data?.login){
                 setLoginData(result.data.login);
-                props.history.replace('/users-list')
+                props.history.replace("/users-list")
             }
             
         }

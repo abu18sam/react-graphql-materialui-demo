@@ -1,20 +1,20 @@
 import React from 'react';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-
-const UsersList = React.lazy(() => import('../modules/UsersList/UsersList'));
-const Authentication = React.lazy(() => import('../modules/authetication/Authentication'))
+import UsersList from '../modules/UsersList/UsersList';
+import SignIn from '../modules/authetication/SignIn/SignIn';
+import SignUp from '../modules/authetication/SignUp/SignUp';
 
 const Routes = () => {
     return (
         <BrowserRouter >
-            <React.Suspense fallback={() => (<div>Loading...</div>)}>
-                <Switch>
-                    <Route path="/" component={Authentication} />
-                    <Route path="/users-list" component={UsersList} />
+            
+                <Switch>                    
+                    <Route path="/users-list"><UsersList/></Route>                    
+                    <Route path="/signup" component={SignUp} />
+                    <Route exact path="/" component={SignIn} />
                 </Switch>
-            </React.Suspense>
+            
         </BrowserRouter>
     )
 }

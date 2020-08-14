@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const TopNavigation: React.FC = () => {
 
     return (
-        <AppBar position="static">
+        <AppBar position="relative">
             <Toolbar>
                 <Link to="/"><Button color="secondary">Signin</Button></Link>
                 <Link to="/signup"><Button color="secondary">Signup</Button></Link>

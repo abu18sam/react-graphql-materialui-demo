@@ -7,12 +7,12 @@ import REGISTER_USER from './signUpQuery';
 
 const useStyles = makeStyles({
     container: {
-        width:"100%",        
-        paddingTop: '60px',        
+        width: "100%",
+        paddingTop: '60px',
     },
     card: {
         maxWidth: "40%",
-        minWidth:"300px",
+        minWidth: "300px",
         minHeight: "400px",
         marginLeft: 'auto',
         marginRight: 'auto'
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     signupForm: {
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center',        
+        textAlign: 'center',
     },
     textFields: {
         width: "100%",
@@ -30,8 +30,8 @@ const useStyles = makeStyles({
         marginTop: '30px',
         width: '100%'
     },
-    logoImg:{
-        textAlign:'center',
+    logoImg: {
+        textAlign: 'center',
     }
 })
 
@@ -49,7 +49,7 @@ const InitialState: formFields = {
     lastName: ""
 }
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC = (props: any) => {
 
     const classes = useStyles();
 
@@ -66,7 +66,7 @@ const SignUp: React.FC = () => {
         try {
             const { email, password, firstName, lastName } = formField;
 
-            let result = await registerUser({
+            registerUser({
                 variables: {
                     "data": {
                         "firstName": firstName,
@@ -76,7 +76,9 @@ const SignUp: React.FC = () => {
                     }
                 }
             })
-            console.log("SignUp_response=>", result);
+                .then(resp => {
+                    props.history.replace('/');
+                })
         }
         catch (error) {
             console.log('Register_user_catch=>', error);
@@ -84,11 +86,11 @@ const SignUp: React.FC = () => {
     }
 
     return (
-        <Container className={classes.container}>            
+        <Container className={classes.container}>
             <Card className={classes.card} >
                 <CardContent >
                     <div className={classes.logoImg}>
-                        <img src="https://img.icons8.com/dusk/64/000000/safe-in.png" alt="store safe"/>
+                        <img src="https://img.icons8.com/dusk/64/000000/safe-in.png" alt="store safe" />
                     </div>
                     <Typography variant="h4" color="textPrimary" style={{ textAlign: 'center' }}>Sign up</Typography>
                     <form onSubmit={handleSubmit} className={classes.signupForm}>
@@ -140,13 +142,13 @@ const SignUp: React.FC = () => {
                             />
                         </div>
                         {/* <CardActions> */}
-                            <Button variant="contained" color="primary" className={classes.submitBtn} onClick={handleSubmit}>
-                                SignUp
+                        <Button variant="contained" color="primary" className={classes.submitBtn} onClick={handleSubmit}>
+                            SignUp
                             </Button>
                         {/* </CardActions> */}
                     </form>
                 </CardContent>
-            </Card>            
+            </Card>
         </Container>
     )
 }
